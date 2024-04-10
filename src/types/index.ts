@@ -4,7 +4,7 @@ export interface IProductItem {
     category: string;
     description: string;
     image: string;
-    price: number;
+    price: number | null;
 }
 
 export interface IAppState {
