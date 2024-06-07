@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html class="no-js" lang="ru">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#000000">
 	<link href="/favicon.ico" rel="icon">
+	<!-- <link rel="manifest" href="/manifest.json" /> -->
 	<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
 	<link type="image/png" href="/favicon-32x32.png" rel="icon" sizes="32x32">
 	<link type="image/png" href="/favicon-16x16.png" rel="icon" sizes="16x16">
@@ -20,7 +20,7 @@
 		<header class="header">
 			<div class="header__container">
 				<a class="header__logo" href="/">
-					<img class="header__logo-image" src="<%=require('../images/logo.svg')%>" alt="WebLarek logo">
+					<img class="header__logo-image" src="<%=require('../images/logo.svg')%>" alt="Film! logo">
 				</a>
 				<button class="header__basket">
 					<span class="header__basket-counter">0</span>
@@ -47,7 +47,7 @@
 				<div class="card card_full">
 					<img class="card__image" src="<%=require('../images/Subtract.svg')%>" alt>
 					<div class="card__column">
-						<span class="card__category card__category_other">другое</span>
+						<span class="card__category">другое</span>
 						<h2 class="card__title">Бэкенд-антистресс</h2>
 						<p class="card__text">Если планируете решать задачи в тренажёре, берите два.</p>
 						<div class="card__row">
@@ -215,8 +215,8 @@
 				<div class="order__field">
 					<h2 class="modal__title">Способ оплаты</h2>
 					<div class="order__buttons">
-						<button class="button button_alt" id="card" name="card" type="button">Онлайн</button>
-						<button class="button button_alt" id="cash" name="cash" type="button">При получении</button>
+						<button class="button button_alt" name="card" type="button">Онлайн</button>
+						<button class="button button_alt" name="cash" type="button">При получении</button>
 					</div>
 				</div>
 				<label class="order__field">
@@ -236,7 +236,7 @@
 			<div class="order">
 				<label class="order__field">
 					<span class="form__label modal__title">Email</span>
-					<input class="form__input" name="email" type="text" placeholder="Введите Email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+					<input class="form__input" name="email" type="text" placeholder="Введите Email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
 				</label>
 				<label class="order__field">
 					<span class="form__label modal__title">Телефон</span>
