@@ -11,6 +11,7 @@ export interface IModalView extends View<IModalView> {
 export class ModalView extends View<IModalView> implements IModalView {
 	protected _closeButton: HTMLButtonElement;
 	protected _content: HTMLElement;
+	protected _modalContainer: HTMLElement;
 
 	constructor(protected container: HTMLElement) {
 		super(container);
@@ -23,16 +24,23 @@ export class ModalView extends View<IModalView> implements IModalView {
 			bem('modal', 'content').class,
 			container
 		);
+		this._modalContainer = ensureElement<HTMLElement>(
+			bem('modal', 'container').class,
+			container
+		);
 
-		const closeHandler = () => this.visibility = false;
-		this._closeButton.addEventListener('click', closeHandler);
-		this.container.addEventListener('click', closeHandler);
-		this._content.addEventListener('click', (event) => event.stopPropagation());
+		this._modalContainer.addEventListener('click', (e) => e.stopPropagation());
 	}
 
 	addCloseHandler(handler: () => void) {
-		this._closeButton.addEventListener('click', handler);
-		this.container.addEventListener('click', handler);
+		const closeHandle = () => {
+			this.visibility = false;
+			handler();
+		};
+
+		this.container.addEventListener('click', closeHandle);
+		this._closeButton.addEventListener('click', closeHandle);
+		this._content.replaceChildren(null);
 	}
 
 	set content(value: HTMLElement) {
